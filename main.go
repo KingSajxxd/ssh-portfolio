@@ -16,6 +16,7 @@ import (
 	"github.com/charmbracelet/ssh"
 	"github.com/charmbracelet/wish"
 	wb "github.com/charmbracelet/wish/bubbletea"
+	"github.com/muesli/termenv"
 )
 
 // --- 1. DATA & CONTENT ---
@@ -861,6 +862,12 @@ func (m model) View() string {
 		MarginLeft(horizontalPadding).
 		Render(mainBox)
 }
+func init() {
+	// Force "True Color" (24-bit) output, bypassing environment checks
+	lipgloss.SetColorProfile(termenv.TrueColor)
+}
+
+// ... func main() starts here
 
 // --- 6. SERVER ---
 
